@@ -1,23 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react"
+import Loginform from './components/Loginform';
+import axios from 'axios'
+
+
+
+const api=axi
+
+
+
 
 function App() {
+  const [user,setUser]=useState({email:""});
+const [error,setError]=useState("");
+
+const Login=details=>{
+  console.log(details);
+}
+
+const Logout=()=>{
+  console.log('logged out');
+}
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {(user.email !="")?(
+        <div className='welcome'>
+          <h2>Welcome, <span>{user.name}</span></h2>
+          <button>Log out</button>
+        </div>):(
+          <Loginform Login={Login} error={error}/>
+        
+      )}
     </div>
   );
 }
