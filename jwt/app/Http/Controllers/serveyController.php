@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Servey;
+use Auth;
 
 class serveyController extends Controller
 {
@@ -19,7 +20,16 @@ class serveyController extends Controller
             "Serveys" => $serveys
         ], 200);
     }
-
+    public function getserveyByadminId(){
+        $servey=new Servey;
+        $servey->uid=$aid=Auth::user()->id;
+        $servey= Servey::where("uid", "=", "$aid")->get();
+        
+        return response()->json([
+            "status" => "Success",
+            "results" => $serveys
+        ], 200);
+    }
 
     public function addServey(Request $request){
         $servey = new Servey;
