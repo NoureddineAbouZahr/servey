@@ -26,3 +26,4 @@ Route::group(['middleware' => 'api'], function($router) {
 });
 
 Route::get('/my_serveys', [serveyController::class, 'getserveyByadminId']);
+Route::get('/serveys', [serveyController::class, 'getAllServeys']);
